@@ -1,3 +1,13 @@
+FORK maargenton/unicorn
+=======================
+
+The purpose of this fork is primarily to adapt the build script to better
+support cross-compilation builds of the XXX project. The goal is to produce
+statically linked Go binaries for all common targets across
+{darwin,linux,windows}/{x86_64,arm,arm64) using
+[multiarch/crossbuild](https://github.com/multiarch/crossbuild). The emulation target is 32-bit ARM only.
+
+
 Unicorn Engine
 ==============
 
@@ -51,4 +61,3 @@ If you want to contribute, please pick up something from our [Github issues](htt
 We also maintain a list of more challenged problems in a [TODO list](https://github.com/unicorn-engine/unicorn/wiki/TODO).
 
 [CREDITS.TXT](CREDITS.TXT) records important contributors of our project.
-
