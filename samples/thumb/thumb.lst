@@ -1,0 +1,173 @@
+
+build/thumb.elf:     file format elf32-littlearm
+build/thumb.elf
+architecture: armv7e-m, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0x20000000
+
+Program Header:
+    LOAD off    0x00010034 vaddr 0x20000034 paddr 0x08000000 align 2**16
+         filesz 0x00000000 memsz 0x00000190 flags rw-
+    LOAD off    0x00010000 vaddr 0x20000000 paddr 0x20000000 align 2**16
+         filesz 0x00000034 memsz 0x00000034 flags r-x
+private flags = 5000200: [Version5 EABI] [soft-float ABI]
+
+Sections:
+Idx Name            Size      VMA       LMA       File off  Algn  Flags
+  0 .text           0000002c  20000000  20000000  00010000  2**2  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .init           00000004  2000002c  2000002c  0001002c  2**2  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .fini           00000004  20000030  20000030  00010030  2**2  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  3 .noinit         00000000  20000034  20000034  00010034  2**0  CONTENTS
+  4 .data           00000000  20000034  08000000  00010034  2**0  CONTENTS, ALLOC, LOAD, DATA
+  5 .bss            00000190  20000034  08000000  00010034  2**2  ALLOC
+  6 .ARM.attributes 0000002a  00000000  00000000  00010034  2**0  CONTENTS, READONLY
+  7 .comment        00000079  00000000  00000000  0001005e  2**0  CONTENTS, READONLY
+  8 .debug_info     000010a6  00000000  00000000  000100d7  2**0  CONTENTS, READONLY, DEBUGGING
+  9 .debug_abbrev   000002f0  00000000  00000000  0001117d  2**0  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc      00000046  00000000  00000000  0001146d  2**0  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_aranges  00000020  00000000  00000000  000114b3  2**0  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges   00000010  00000000  00000000  000114d3  2**0  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_line     000004d7  00000000  00000000  000114e3  2**0  CONTENTS, READONLY, DEBUGGING
+ 14 .debug_str      000006c1  00000000  00000000  000119ba  2**0  CONTENTS, READONLY, DEBUGGING
+ 15 .debug_frame    00000020  00000000  00000000  0001207c  2**2  CONTENTS, READONLY, DEBUGGING
+SYMBOL TABLE:
+20000000 l    d  .text	00000000 .text
+2000002c l    d  .init	00000000 .init
+20000030 l    d  .fini	00000000 .fini
+20000034 l    d  .noinit	00000000 .noinit
+20000034 l    d  .data	00000000 .data
+20000034 l    d  .bss	00000000 .bss
+00000000 l    d  .ARM.attributes	00000000 .ARM.attributes
+00000000 l    d  .comment	00000000 .comment
+00000000 l    d  .debug_info	00000000 .debug_info
+00000000 l    d  .debug_abbrev	00000000 .debug_abbrev
+00000000 l    d  .debug_loc	00000000 .debug_loc
+00000000 l    d  .debug_aranges	00000000 .debug_aranges
+00000000 l    d  .debug_ranges	00000000 .debug_ranges
+00000000 l    d  .debug_line	00000000 .debug_line
+00000000 l    d  .debug_str	00000000 .debug_str
+00000000 l    d  .debug_frame	00000000 .debug_frame
+00000000 l    df *ABS*	00000000 main.cpp
+00000000 l    df *ABS*	00000000 /Users/maa/Documents/Development/Study/cpp/alek-sim-prototype/toolchain/gcc-arm-none-eabi-v9.2.1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m/nofp/crti.o
+20000034 g       .fini	00000000 __exidx_end
+20000034 g       .fini	00000000 _etext
+20000034 g       .noinit	00000000 _noinit
+20000034 g     O .bss	00000190 buff
+20000034 g       .fini	00000000 __exidx_start
+2000002c g     F .init	00000000 _init
+200001c4 g       .bss	00000000 _ebss
+20000000 g     F .text	0000002c _main()
+20000034 g       .bss	00000000 _bss
+20000034 g       .noinit	00000000 _enoinit
+20000000 g       .text	00000000 _text
+20000030 g     F .fini	00000000 _fini
+20000034 g       .data	00000000 _data
+20000034 g       .data	00000000 _edata
+200001c4 g       .bss	00000000 _heap
+08000000 g       *ABS*	00000000 _ldata
+00000000         *UND*	00000000 _main
+
+
+
+==============================================================================
+Contents of section .text:
+ 20000000 09490023 5a0041f8 23200133 642bf9d1  .I.#Z.A.# .3d+..
+ 20000010 002351f8 232002eb 430241f8 23200133  .#Q.# ..C.A.# .3
+ 20000020 642bf6d1 f4e700bf 34000020           d+......4..
+
+==============================================================================
+Contents of section .init:
+ 2000002c f8b500bf                             ....
+
+==============================================================================
+Contents of section .fini:
+ 20000030 f8b500bf                             ....
+
+==============================================================================
+Contents of section .ARM.attributes:
+ 0000 41290000 00616561 62690001 1f000000  A)...aeabi......
+ 0010 0537452d 4d00060d 074d0902 12041401  .7E-M....M......
+ 0020 15011703 18011a01 2201               ........".
+
+==============================================================================
+Contents of section .comment:
+ 0000 4743433a 2028474e 5520546f 6f6c7320  GCC: (GNU Tools
+ 0010 666f7220 41726d20 456d6265 64646564  for Arm Embedded
+ 0020 2050726f 63657373 6f727320 392d3230   Processors 9-20
+ 0030 31392d71 342d6d61 6a6f7229 20392e32  19-q4-major) 9.2
+ 0040 2e312032 30313931 30323520 2872656c  .1 20191025 (rel
+ 0050 65617365 29205b41 524d2f61 726d2d39  ease) [ARM/arm-9
+ 0060 2d627261 6e636820 72657669 73696f6e  -branch revision
+ 0070 20323737 3539395d 00                  277599].
+
+
+==============================================================================
+Disassembly of section .text:
+
+20000000 <_main()>:
+_Z5_mainv():
+
+> ./src/main.cpp:11
+
+volatile uint32_t buff[100];
+
+__attribute__((section(".vectors")))
+void _main(void) {
+    for (int i = 0; i < 100; i++) {
+20000000:	4909      	ldr	r1, [pc, #36]	; (20000028 <_main()+0x28>)
+20000002:	2300      	movs	r3, #0
+
+> ./src/main.cpp:12 (discriminator 2)
+        buff[i] = 2*i;
+20000004:	005a      	lsls	r2, r3, #1
+20000006:	f841 2023 	str.w	r2, [r1, r3, lsl #2]
+
+> ./src/main.cpp:11 (discriminator 2)
+    for (int i = 0; i < 100; i++) {
+2000000a:	3301      	adds	r3, #1
+2000000c:	2b64      	cmp	r3, #100	; 0x64
+2000000e:	d1f9      	bne.n	20000004 <_main()+0x4>
+
+> ./src/main.cpp:16
+    }
+
+    for(;;) {
+        for (int i = 0; i < 100; i++) {
+20000010:	2300      	movs	r3, #0
+
+> ./src/main.cpp:17 (discriminator 2)
+            buff[i] += 2*i;
+20000012:	f851 2023 	ldr.w	r2, [r1, r3, lsl #2]
+20000016:	eb02 0243 	add.w	r2, r2, r3, lsl #1
+2000001a:	f841 2023 	str.w	r2, [r1, r3, lsl #2]
+
+> ./src/main.cpp:16 (discriminator 2)
+        for (int i = 0; i < 100; i++) {
+2000001e:	3301      	adds	r3, #1
+20000020:	2b64      	cmp	r3, #100	; 0x64
+20000022:	d1f6      	bne.n	20000012 <_main()+0x12>
+20000024:	e7f4      	b.n	20000010 <_main()+0x10>
+20000026:	bf00      	nop
+20000028:	20000034 	.word	0x20000034
+
+Disassembly of section .init:
+
+2000002c <_init>:
+_init():
+2000002c:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+2000002e:	bf00      	nop
+
+Disassembly of section .fini:
+
+20000030 <_fini>:
+_fini():
+20000030:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+20000032:	bf00      	nop
+
+
+==============================================================================
+uint8_t code [] = {
+    0x09,0x49,0x00,0x23,0x5A,0x00,0x41,0xF8,0x23,0x20,0x01,0x33,0x64,0x2B,0xF9,0xD1,
+    0x00,0x23,0x51,0xF8,0x23,0x20,0x02,0xEB,0x43,0x02,0x41,0xF8,0x23,0x20,0x01,0x33,
+    0x64,0x2B,0xF6,0xD1,0xF4,0xE7,0x00,0xBF,0x34,0x00,0x00,0x20
+};
