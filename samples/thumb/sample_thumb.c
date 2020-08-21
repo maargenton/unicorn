@@ -19,10 +19,37 @@ static void hook_code(uc_engine *uc, uint64_t address, uint32_t size, void *user
 void hook_mem(uc_engine *uc, uc_mem_type type,
         uint64_t address, int size, int64_t value, void *user_data) {
 
-    if ( type == UC_MEM_READ) {
-        printf("  Read 0x%"PRIx64 ", block size = 0x%x\n", address, size);
-    } else {
-        printf("  Write 0x%"PRIx64 ", block size = 0x%x\n", address, size);
+    switch(type) {
+        case UC_MEM_READ_UNMAPPED:
+            printf("  Read 0x%"PRIx64 ", block size = 0x%x (unmapped)\n", address, size);
+            break;
+        case UC_MEM_WRITE_UNMAPPED:
+            printf("  Write 0x%"PRIx64 ", block size = 0x%x (unmapped)\n", address, size);
+            break;
+        case UC_MEM_FETCH_UNMAPPED:
+            printf("  Fetch 0x%"PRIx64 ", block size = 0x%x (unmapped)\n", address, size);
+            break;
+        case UC_MEM_READ_PROT:
+            printf("  Read 0x%"PRIx64 ", block size = 0x%x (prot)\n", address, size);
+            break;
+        case UC_MEM_WRITE_PROT:
+            printf("  Write 0x%"PRIx64 ", block size = 0x%x (prot)\n", address, size);
+            break;
+        case UC_MEM_FETCH_PROT:
+            printf("  Fetch 0x%"PRIx64 ", block size = 0x%x (prot)\n", address, size);
+            break;
+        case UC_MEM_READ:
+            printf("  Read 0x%"PRIx64 ", block size = 0x%x\n", address, size);
+            break;
+        case UC_MEM_WRITE:
+            printf("  Write 0x%"PRIx64 ", block size = 0x%x\n", address, size);
+            break;
+        case UC_MEM_FETCH:
+            printf("  Fetch 0x%"PRIx64 ", block size = 0x%x\n", address, size);
+            break;
+        default:
+            printf("  ????? 0x%"PRIx64 ", block size = 0x%x\n", address, size);
+            break;
     }
 }
 
@@ -52,7 +79,10 @@ static void test_thumb2(void)
     uc_reg_write(uc, UC_ARM_REG_SP, &sp);
 
     uc_hook_add(uc, &trace1, UC_HOOK_CODE, hook_code, NULL, 1, 0);
-    uc_hook_add(uc, &trace2, UC_HOOK_MEM_READ | UC_HOOK_MEM_WRITE, hook_mem, NULL, 1, 0);
+    int mem_hooks = UC_HOOK_MEM_READ_UNMAPPED | UC_HOOK_MEM_WRITE_UNMAPPED | UC_HOOK_MEM_FETCH_UNMAPPED |
+        UC_HOOK_MEM_READ_PROT | UC_HOOK_MEM_WRITE_PROT | UC_HOOK_MEM_FETCH_PROT |
+        UC_HOOK_MEM_READ | UC_HOOK_MEM_WRITE | UC_HOOK_MEM_FETCH;
+    uc_hook_add(uc, &trace2, mem_hooks, hook_mem, NULL, 1, 0);
 
     err = uc_emu_start(uc, base_addr | 1, base_addr + 64*1024, 0, 10000);
     if (err) {
